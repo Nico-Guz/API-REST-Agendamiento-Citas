@@ -74,3 +74,47 @@ def actualizar_cita(codigo):
 
     except Exception as e:
         return jsonify({'mensaje': f'Error al actualizar la cita: {str(e)}', 'exito': False}), 500
+
+
+@citas_bp.route('/citas', methods=['GET'])
+def listar_citas():
+    try:
+        cursor = conexion.connection.cursor()
+        sql = """SELECT id, inicio, fin, cod_paciente, cod_medico, cod_tipo_cita, 
+                 cod_estado FROM cita ORDER BY id ASC"""
+        cursor.execute(sql)
+        datos = cursor.fetchall()
+        
+        citas = [
+            {'codigo': fila[0], 'paciente_id': fila[1], 'medico_id': fila[2], 'fecha': str(fila[3]), 'hora': str(fila[4])}
+            for fila in datos
+        ]
+        
+        cursor.close()
+        return jsonify({'citas': citas, 'mensaje': "Citas listadas.", 'exito': True})
+    
+    except Exception as ex:
+        return jsonify({'mensaje': f"Error: {str(ex)}", 'exito': False})
+
+
+@citas_bp.route('/citas/<int:codigo>', methods=['GET'])
+def leer_cita(codigo):
+    try:
+        cursor = conexion.connection.cursor()
+        sql = """SELECT id, inicio, fin, cod_paciente, cod_medico, cod_tipo_cita, 
+                 cod_estado FROM cita WHERE id = %s"""
+        
+        cursor.execute(sql, (codigo,))
+        datos = cursor.fetchone()
+        
+        if datos:
+            cita = {'id': datos[0], 'inicio': datos[1], 'fin': datos[2], 'cod_paciente': datos[3], 
+                     'cod_medico': datos[4], 'cod_tipo_cita':[5]}
+            cursor.close()
+            return jsonify({'cita': cita, 'mensaje': "Cita encontrada.", 'exito': True})
+        
+        cursor.close()
+        return jsonify({'mensaje': "Cita no encontrada.", 'exito': False})
+    
+    except Exception as ex:
+        return jsonify({'mensaje': f"Error: {str(ex)}", 'exito': False})

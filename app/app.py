@@ -5,6 +5,7 @@ from config import config
 from routes.pacientes import pacientes_bp
 from routes.index import index_bp
 from routes.citas import citas_bp
+from routes.medico import medicos_bp
 
 app = Flask(__name__)
 app.config.from_object(config['development'])
@@ -16,6 +17,7 @@ mysql = MySQL(app)
 app.register_blueprint(pacientes_bp)
 app.register_blueprint(index_bp)
 app.register_blueprint(citas_bp)
+app.register_blueprint(medicos_bp)
 
 # Manejo de errores
 @app.errorhandler(404)
