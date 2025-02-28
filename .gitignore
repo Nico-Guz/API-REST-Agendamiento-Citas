@@ -3,3 +3,4 @@ app/routes/__pycache__/__init__.cpython-313.pyc
 app/__pycache__/config.cpython-313.pyc
 app/routes/__pycache__/index.cpython-313.pyc
 app/__pycache__/database.cpython-313.pyc
+app/routes/__pycache__/citas.cpython-313.pyc

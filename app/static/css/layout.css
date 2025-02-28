@@ -1,3 +1,4 @@
+/* styles.css */
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +12,7 @@ body {
     height: 100vh;
     background: linear-gradient(to right, #4facfe, #00f2fe);
 }
-.login-container {
+.container {
     background: white;
     padding: 2rem;
     border-radius: 10px;
@@ -19,18 +20,18 @@ body {
     text-align: center;
     width: 300px;
 }
-.login-container h2 {
+.container h2 {
     margin-bottom: 1rem;
     color: #333;
 }
-.login-container input {
+.container input {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-.login-container button {
+.container button {
     width: 100%;
     padding: 10px;
     background: #4facfe;
@@ -40,6 +41,16 @@ body {
     cursor: pointer;
     transition: 0.3s;
 }
-.login-container button:hover {
+.container button:hover {
     background: #00c6ff;
+}
+.link {
+    display: block;
+    margin-top: 10px;
+    color: #4facfe;
+    text-decoration: none;
+    font-size: 14px;
+}
+.link:hover {
+    text-decoration: underline;
 }
