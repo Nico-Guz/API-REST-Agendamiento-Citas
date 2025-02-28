@@ -4,8 +4,8 @@
 
 ### 1️⃣ Clonar el repositorio  
 ```bash
-git clone <URL_DEL_REPOSITORIO>
-cd <NOMBRE_DEL_PROYECTO>
+git clone https://github.com/Nico-Guz/API-REST-Agendamiento-Citas.git
+cd API-REST-Agendamiento-Citas
 ```
 
 ### 2️⃣ Crear un entorno virtual (opcional pero recomendado)  
@@ -67,6 +67,18 @@ python app.py
 Por defecto, se ejecutará en **http://127.0.0.1:5000**.  
 
 
+## 📊 Modelo de Datos
+El siguiente diagrama representa la estructura de la base de datos normalizada utilizada en el proyecto:
+![Descripción de la imagen](img/Captura7.PNG)
+
+En este modelo se incluyen las siguientes entidades principales:
+- Pacientes: Almacena la información de los pacientes registrados.
+- Médicos: Contiene los datos de los médicos y sus especialidades.
+- Citas: Registra las citas médicas, incluyendo fechas y estados.
+  
+Las relaciones entre estas entidades permiten gestionar eficientemente el agendamiento de citas.
+
+
 ## 📌 Funcionalidades implementadas  
 ✅ Configuración del entorno con Flask y MySQL.  
 ✅ Registro de pacientes, incluyendo sus datos personales y credenciales de usuario.  
@@ -84,23 +96,8 @@ Registra un paciente junto con sus credenciales.
 
 - **URL**: `/paciente`  
 - **Método**: `POST`  
-- **Formato de solicitud (JSON)**:  
-```json
-{
-  "nombre": "Carlos",
-  "apellido": "Gómez",
-  "numero_documento": "987654321",
-  "correo": "carlos@mail.com",
-  "clave": "123456"
-}
-```
-- **Respuesta exitosa**:  
-```json
-{
-  "mensaje": "Paciente registrado exitosamente.",
-  "exito": true
-}
-```
+- **Formato de solicitud (JSON) y Respuesta exitosa**:  
+![Descripción de la imagen](img/Captura.PNG)
 
 ---
 
@@ -111,24 +108,8 @@ Registra un nuevo médico en la base de datos.
 
 - **URL**: `/medico`  
 - **Método**: `POST`  
-- **Formato de solicitud (JSON)**:  
-```json
-{
-  "nombre": "Juan",
-  "apellido": "Pérez",
-  "numero_documento": "123456789",
-  "celular": "3112345678",
-  "cod_tipo_documento": 1,
-  "cod_especialidad": 2
-}
-```
-- **Respuesta exitosa**:  
-```json
-{
-  "mensaje": "Medico registrado exitosamente.",
-  "exito": true
-}
-```
+- **Formato de solicitud (JSON) y Respuesta exitosa**:  
+![Descripción de la imagen](img/Captura1.PNG) 
 - **Respuesta en caso de error**:  
 ```json
 {
@@ -145,87 +126,28 @@ Registra un nuevo médico en la base de datos.
 - **URL**: `/citas`  
 - **Método**: `GET`  
 - **Respuesta exitosa**:  
-```json
-{
-  "citas": [
-    {
-      "codigo": 1,
-      "nombre": "Consulta General",
-      "creditos": 3
-    }
-  ],
-  "mensaje": "Citas listadas.",
-  "exito": true
-}
-```
+![Descripción de la imagen](img/Captura2.PNG) 
 
 #### 🔍 **Obtener una cita específica**  
 - **URL**: `/citas/<codigo>`  
 - **Método**: `GET`  
-- **Ejemplo de respuesta**:  
-```json
-{
-  "curso": {
-    "codigo": 1,
-    "nombre": "Consulta General",
-    "creditos": 3
-  },
-  "mensaje": "Cita encontrada.",
-  "exito": true
-}
-```
+- **Respuesta exitosa**:  
+![Descripción de la imagen](img/Captura3.PNG) 
 
 #### ➕ **Registrar una nueva cita**  
 - **URL**: `/cita`  
 - **Método**: `POST`  
-- **Formato de solicitud (JSON)**:  
-```json
-{
-  "inicio": "2024-02-28 08:00:00",
-  "fin": "2024-02-28 08:30:00",
-  "cod_paciente": 1,
-  "cod_medico": 2,
-  "cod_tipo_cita": 3,
-  "cod_estado": 1
-}
-```
-- **Respuesta exitosa**:  
-```json
-{
-  "mensaje": "Cita registrada exitosamente.",
-  "exito": true
-}
-```
+- **Formato de solicitud (JSON) y Respuesta exitosa**:  
+![Descripción de la imagen](img/Captura4.PNG) 
 
 #### ✏️ **Actualizar una cita**  
 - **URL**: `/cita/<codigo>`  
 - **Método**: `PUT`  
-- **Ejemplo de solicitud (JSON)**:  
-```json
-{
-  "inicio": "2024-02-28 09:00:00",
-  "fin": "2024-02-28 09:30:00",
-  "cod_paciente": 1,
-  "cod_medico": 2,
-  "cod_tipo_cita": 3,
-  "cod_estado": 2
-}
-```
-- **Respuesta exitosa**:  
-```json
-{
-  "mensaje": "Cita actualizada exitosamente.",
-  "exito": true
-}
-```
+- **Formato de solicitud (JSON) y Respuesta exitosa**:  
+![Descripción de la imagen](img/Captura5.PNG) 
 
 #### ❌ **Eliminar una cita**  
 - **URL**: `/cita/<codigo>`  
 - **Método**: `DELETE`  
 - **Respuesta exitosa**:  
-```json
-{
-  "mensaje": "Cita eliminada exitosamente.",
-  "exito": true
-}
-```
+![Descripción de la imagen](img/Captura6.PNG)
