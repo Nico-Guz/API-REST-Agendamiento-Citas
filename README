@@ -64,3 +64,11 @@ python app.py
 ```
 Por defecto, se ejecutará en **http://127.0.0.1:5000**.
 
+📌 Funcionalidades implementadas
+✅ Configuración del entorno con Flask y MySQL.
+✅ Registro de pacientes, incluyendo sus datos personales y credenciales de usuario.
+✅ Ruta principal con un formulario de inicio de sesión.
+
+📍 Rutas disponibles
+POST /paciente → Registra un paciente junto con su usuario.
+GET / → Muestra el formulario de login.
