@@ -2,11 +2,18 @@ from flask import Flask
 from flask_mysqldb import MySQL
 from config import config
 
+from routes.pacientes import pacientes_bp
+from routes.index import index_bp
+
 app = Flask(__name__)
 app.config.from_object(config['development'])
 
 # Configurar la base de datos
 mysql = MySQL(app)
+
+# Registrar Blueprints
+app.register_blueprint(pacientes_bp)
+app.register_blueprint(index_bp)
 
 # Manejo de errores
 @app.errorhandler(404)
